@@ -10,6 +10,16 @@ form.addEventListener("submit", (e) => {
     const hours = Math.floor(((birthDate - currentDate) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
     const minutes = Math.floor(((birthDate - currentDate) % (1000 * 60 * 60)) / (1000 * 60))
     const seconds = Math.floor(((birthDate - currentDate) % (1000 * 60)) / (1000))
-    display.textContent = `Your Birthday will be in ${days} Days ${hours} hours, ${minutes}minutes and ${seconds} seconds`
-    date.value = ""
+    let isNum = days + hours + minutes + seconds
+    if (isNaN(isNum)) {
+        display.textContent = "Enter a valid date"
+        date.value = ""
+    } else if (birthDate < currentDate ) {
+         display.textContent = "Enter a valid date"
+        date.value = ""
+    }
+     else {
+        display.textContent = `Your Birthday will be in ${days} Days ${hours} hours, ${minutes} minutes and ${seconds} seconds`
+        date.value = ""
+    }
 })
